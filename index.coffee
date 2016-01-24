@@ -89,12 +89,12 @@ style: """
         border-radius: 20px
 
     .temp-range .bar::before
-        content: "hi"
+        content: attr(data-content-high)
         position: absolute
         top: -19px
 
     .temp-range .bar::after
-        content: "lo"
+        content: attr(data-content-low)
         position: absolute
         bottom: -19px;
 """
@@ -233,7 +233,7 @@ update: (output, domEl) ->
         wind_bearing = @bearing output.currently.windBearing
         $('#wind').text("Wind: #{wind_speed} #{wind_speed_units} (#{wind_bearing})")
 
-        $('#icon').css("background-image", "url(weather.widget/icons/#{output.currently.icon}.png)")
+        $('#icon').css("background-image", "url(forecast.widget/icons/#{output.currently.icon}.png)")
 
 
         tempMin = 1000
@@ -252,13 +252,16 @@ update: (output, domEl) ->
                 $('#day' + day).find('.day-text').text('Today')
             else
                 $('#day' + day).find('.day-text').text(@dayMapping[new Date(output.daily.data[day].time * 1000).getDay()])
-            $('#day' + day).find('.weather-icon').css("background-image", "url(weather.widget/icons/#{output.daily.data[day].icon}.png)")
+            $('#day' + day).find('.weather-icon').css("background-image", "url(forecast.widget/icons/#{output.daily.data[day].icon}.png)")
             day_high = Math.round output.daily.data[day].temperatureMax
             day_low = Math.round output.daily.data[day].temperatureMin
             day_high_rel = @map output.daily.data[day].temperatureMax, tempMin, tempMax, 0, 1
             day_low_rel = @map output.daily.data[day].temperatureMin, tempMin, tempMax, 0, 1
             height = 100
-            console.log 'content ' + window.getComputedStyle($("#day#{day}").find('.bar')[0], '::before').getPropertyValue('content');
+            $("#day#{day}").find('.bar').attr('data-content-high', day_high);
+            $("#day#{day}").find('.bar').attr('data-content-low', day_low);
+            # window.getComputedStyle($("#day#{day}").find('.bar')[0], '::before').setProperty('content', day_high, 0);
+            # window.getComputedStyle($("#day#{day}").find('.bar')[0], '::after').setProperty('content', day_low, 0);
             $("#day#{day}").find('.bar').css('top', height - (day_high_rel * height))
             $("#day#{day}").find('.bar').css('bottom', day_low_rel * height)
             # $("#day#{day}").find('.bar').text("#{day_high_rel} #{day_low_rel}")
