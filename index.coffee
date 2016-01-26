@@ -175,6 +175,9 @@ style: """
         font-size: 14px
         font-weight: 300
 
+    .prepare-loading
+        transition: opacity 0.5s
+
     .loading
         opacity: 0
 """
@@ -317,8 +320,7 @@ update: (output, domEl) ->
         wind_bearing = @bearing output.currently.windBearing
         $('.fe_wind').text("Wind: #{wind_speed} #{wind_speed_units} (#{wind_bearing})")
 
-        $('#fe_current_icon').css("-webkit-mask-image", "url(forecast.widget/icons/#{output.currently.icon}.png)")
-
+        @changeIcon($('#fe_current_icon'), output.currently.icon)
 
         tempMin = 1000
         tempMax = -1000
@@ -336,7 +338,7 @@ update: (output, domEl) ->
                 $('#day' + day).find('.day-text').text('Today')
             else
                 $('#day' + day).find('.day-text').text(@dayMapping[new Date(output.daily.data[day].time * 1000).getDay()])
-            $('#day' + day).find('.weather-icon').css("-webkit-mask-image", "url(forecast.widget/icons/#{output.daily.data[day].icon}.png)")
+            @changeIcon($('#day' + day).find('.weather-icon'), output.daily.data[day].icon)
             day_high = Math.round(output.daily.data[day].temperatureMax) + '°'
             day_low = Math.round(output.daily.data[day].temperatureMin) + '°'
             day_high_rel = @map output.daily.data[day].temperatureMax, tempMin, tempMax, 0, 1
@@ -355,7 +357,16 @@ update: (output, domEl) ->
 map: (x, in_min, in_max, out_min, out_max) ->
     return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 
-
+changeIcon: (element, icon) ->
+    if element.css('-webkit-mask-image') isnt "url(#{window.location.origin}/forecast.widget/icons/#{icon}.png)"
+        element.addClass('prepare-loading loading')
+        setTimeout =>
+            element.css('-webkit-mask-image', "url(forecast.widget/icons/#{icon}.png)")
+            element.removeClass('loading')
+            setTimeout =>
+                element.removeClass('prepare-loading')
+            , 500
+        , 500
 
 bearing: (bearing) ->
     direction_index = Math.round(bearing / 45)
