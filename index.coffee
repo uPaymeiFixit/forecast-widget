@@ -2,121 +2,205 @@ apiKey: 'f24accee826e147ee895c96f69db3ab2' # put your forcast.io api key inside 
 
 refreshFrequency: false
 
-refreshFrequencyWithBlackjackAndHookers: 1200000
+refreshFrequencyWithBlackjackAndHookers: 120000
 lat: 33.8706763 #other options are auto
 lon: -117.865775 #other options are auto
 units: "us" #us, si, ca, uk, auto
 
 style: """
-    bottom: 15%
-    left: 20px
-    font-family: Helvetica Neue
-    color: #fff
+    top: 550px
+    left: 10px
+    width: 500px
+    font-family: Roboto
+    color: white
+    text-align: center
 
     @font-face
         font-family Weather
         src url(pretty-weather.widget/icons.svg) format('svg')
 
-    .icon
-        font-family: Weather
-        font-size: 40px
-        text-anchor: middle
-        alignment-baseline: middle
+    @font-face
+        font-family: Roboto
+        src: url(forecast.widget/fonts/Roboto-Thin.ttf) format('truetype')
+        font-weight: 100
+        font-style: normal
+    @font-face
+        font-family: Roboto
+        src: url(forecast.widget/fonts/Roboto-ThinItalic.ttf) format('truetype')
+        font-weight: 100
+        font-style: italic
+    @font-face
+        font-family: Roboto
+        src: url(forecast.widget/fonts/Roboto-Light.ttf) format('truetype')
+        font-weight: 300
+        font-style: normal
+    @font-face
+        font-family: Roboto
+        src: url(forecast.widget/fonts/Roboto-LightItalic.ttf) format('truetype')
+        font-weight: 300
+        font-style: italic
+    @font-face
+        font-family: Roboto
+        src: url(forecast.widget/fonts/Roboto-Regular.ttf) format('truetype')
+        font-weight: 400
+        font-style: normal
+    @font-face
+        font-family: Roboto
+        src: url(forecast.widget/fonts/Roboto-RegularItalic.ttf) format('truetype')
+        font-weight: 400
+        font-style: italic
+    @font-face
+        font-family: Roboto
+        src: url(forecast.widget/fonts/Roboto-Medium.ttf) format('truetype')
+        font-weight: 500
+        font-style: normal
+    @font-face
+        font-family: Roboto
+        src: url(forecast.widget/fonts/Roboto-MediumItalic.ttf) format('truetype')
+        font-weight: 500
+        font-style: italic
+    @font-face
+        font-family: Roboto
+        src: url(forecast.widget/fonts/Roboto-Bold.ttf) format('truetype')
+        font-weight: 700
+        font-style: normal
+    @font-face
+        font-family: Roboto
+        src: url(forecast.widget/fonts/Roboto-BoldItalic.ttf) format('truetype')
+        font-weight: 700
+        font-style: italic
+    @font-face
+        font-family: Roboto
+        src: url(forecast.widget/fonts/Roboto-Black.ttf) format('truetype')
+        font-weight: 900
+        font-style: normal
+    @font-face
+        font-family: Roboto
+        src: url(forecast.widget/fonts/Roboto-BlackItalic.ttf) format('truetype')
+        font-weight: 900
+        font-style: italic
 
-    .temp
-        font-size: 20px
-        text-anchor: middle
-        alignment-baseline: baseline
-
-    .outline
-        fill: none
-        stroke: #fff
-        stroke-width: 0.5
-
-    .icon-bg
-        fill: rgba(#fff, 0.95)
-
-    .summary
-        text-align: center
-        border-top: 1px solid #fff
-        padding: 12px 0 0 0
-        margin-top: -20px
-        font-size: 14px
-        max-width: 200px
-        line-height: 1.4
-
-    .date, .location
-        fill: #fff
-        stroke: #fff
-        stroke-width: 1px
-        font-size: 12px
-        text-anchor: middle
-
-    .date
-        fill: #ccc
-        stroke: #ccc
-
-    .date.mask
-        stroke: #999
-        stroke-width: 5px
+    .fe_forecast
+        opacity: 1
+        -webkit-transition: opacity 0.5s
 
     .weather-icon
-        width: 50px
-        height: 50px
-        background-size:cover;
+        width: 25px
+        height: 25px
+        background-size: cover
 
     .weather-icon.big
-        width: 100px
-        height: 100px
+        width: 80px
+        height: 80px
 
-    #temp
-        width: 100px
-        height: 100px
+    .fe_temp
+        width: 90px
         font-size: 50px
+        font-weight: 700
+        letter-spacing: -1px
+
+    .fe_temp::after
+        content: '°'
+
+    .fe-temp-direction
+        margin-top: -6px
+        margin-right: 5px
+        font-size: 13px
+        text-align: center
+
+    .days > div
+        width: 38px
+        -webkit-align-content: center
+        align-content: center
+
+    .days .weather-icon
+        margin-left: auto;
+        margin-right: auto;
+        background: @color
+        -webkit-mask-position: 0 0
+        -webkit-mask-image: url()
+        -webkit-mask-size: 25px 25px
 
     .day-text
+        font-size: 12px
+        font-weight: 500
         text-transform: uppercase
 
     .temp-range
         position: relative
         margin-top: 15px
+        width: 100%
         height: 100px
 
     .temp-range .bar
         position: absolute
+        /*margin-left: auto
+        margin-right: auto*/
+        left: 9px
         width: 20px
-        background-color: white
+        background-color: @color
         border-radius: 20px
+        -webkit-transition: top 0.5s, bottom 0.5s
 
     .temp-range .bar::before
         content: attr(data-content-high)
         position: absolute
-        top: -19px
+        top: -14px
+        left: 4px
+        font-size: 11px
+        font-weight: 300
 
     .temp-range .bar::after
         content: attr(data-content-low)
         position: absolute
-        bottom: -19px;
+        bottom: -15px
+        left: 4px
+        font-size: 11px
+        font-weight: 300
+
+    #fe_current_icon
+        background: @color
+        -webkit-mask-position: 0 0
+        -webkit-mask-image: url()
+        -webkit-mask-size: 80px 80px
+
+    .fe_more_info
+        margin-top: 5px
+
+    .fe_currently .fe_summary
+        font-size: 18px
+        font-weight: bold
+
+    .fe_currently .fe_wind
+        font-size: 14px
+        font-weight: 300
+
+    .loading
+        opacity: 0
 """
 
 command: ""
 
 render: (o) -> """
- <div style="display:flex; flex-direction:row;">
-    <div id="current-weather" style="display:flex; flex-direction:column;">
+<div class="fe_forecast loading" style="display:flex; flex-direction:row;">
+
+    <div class="fe_currently" id="current-weather" style="display:flex; flex-direction:column;">
+        <!-- Top of Current Weather -->
         <div style="display:flex; flex-direction:row;">
-            <div id="icon" class="weather-icon big"></div>
+            <div id="fe_current_icon" class="weather-icon big"></div>
             <div style="display:flex; flex-direction:column;">
-                <div id="temp"></div>
-                <div id="temp-direction"></div>
+                <div class="fe_temp"></div>
+                <div class="fe-temp-direction" id="temp-direction"></div>
             </div>
         </div>
-        <div style="display:flex; flex-direction:column;">
-            <div id="summary"></div>
-            <div id="wind"></div>
+        <!-- Bottom of Current Weather -->
+        <div class="fe_more_info" style="display:flex; flex-direction:column;">
+            <div class="fe_summary"></div>
+            <div class="fe_wind"></div>
         </div>
     </div>
-    <div style="display:flex; flex-direction:row;">
+
+    <div class="days" style="display:flex; flex-direction:row;">
         <div id="day0" style="display:flex; flex-direction:column;">
             <div class="day-text"></div>
             <div class="weather-icon"></div>
@@ -225,15 +309,15 @@ update: (output, domEl) ->
         else
             $('#temp-direction').text("and falling")
 
-        $('#temp').text(Math.round(current_temp) + "º")
-        $('#summary').text(output.currently.summary)
+        $('.fe_temp').text(Math.round(current_temp))
+        $('.fe_summary').text(output.currently.summary)
 
         wind_speed = Math.round output.currently.windSpeed
         wind_speed_units = @unit_labels[@units || "us"].speed
         wind_bearing = @bearing output.currently.windBearing
-        $('#wind').text("Wind: #{wind_speed} #{wind_speed_units} (#{wind_bearing})")
+        $('.fe_wind').text("Wind: #{wind_speed} #{wind_speed_units} (#{wind_bearing})")
 
-        $('#icon').css("background-image", "url(forecast.widget/icons/#{output.currently.icon}.png)")
+        $('#fe_current_icon').css("-webkit-mask-image", "url(forecast.widget/icons/#{output.currently.icon}.png)")
 
 
         tempMin = 1000
@@ -252,9 +336,9 @@ update: (output, domEl) ->
                 $('#day' + day).find('.day-text').text('Today')
             else
                 $('#day' + day).find('.day-text').text(@dayMapping[new Date(output.daily.data[day].time * 1000).getDay()])
-            $('#day' + day).find('.weather-icon').css("background-image", "url(forecast.widget/icons/#{output.daily.data[day].icon}.png)")
-            day_high = Math.round output.daily.data[day].temperatureMax
-            day_low = Math.round output.daily.data[day].temperatureMin
+            $('#day' + day).find('.weather-icon').css("-webkit-mask-image", "url(forecast.widget/icons/#{output.daily.data[day].icon}.png)")
+            day_high = Math.round(output.daily.data[day].temperatureMax) + '°'
+            day_low = Math.round(output.daily.data[day].temperatureMin) + '°'
             day_high_rel = @map output.daily.data[day].temperatureMax, tempMin, tempMax, 0, 1
             day_low_rel = @map output.daily.data[day].temperatureMin, tempMin, tempMax, 0, 1
             height = 100
@@ -266,8 +350,7 @@ update: (output, domEl) ->
             $("#day#{day}").find('.bar').css('bottom', day_low_rel * height)
             # $("#day#{day}").find('.bar').text("#{day_high_rel} #{day_low_rel}")
 
-
-
+        $('.fe_forecast').removeClass('loading')
 
 map: (x, in_min, in_max, out_min, out_max) ->
     return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
