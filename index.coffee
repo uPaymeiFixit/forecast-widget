@@ -175,6 +175,12 @@ style: """
         font-size: 14px
         font-weight: 300
 
+    .fe_currently:first-child
+        margin-top: auto
+
+    .fe_currently:last-child
+        margin-bottom: auto
+
     .prepare-loading
         transition: opacity 0.5s
 
@@ -359,14 +365,24 @@ map: (x, in_min, in_max, out_min, out_max) ->
 
 changeIcon: (element, icon) ->
     if element.css('-webkit-mask-image') isnt "url(#{window.location.origin}/forecast.widget/icons/#{icon}.png)"
-        element.addClass('prepare-loading loading')
-        setTimeout =>
+        if element.css('-webkit-mask-image') is "url(#{window.location.origin}/)"
+            element.addClass('loading')
+            element.addClass('prepare-loading')
             element.css('-webkit-mask-image', "url(forecast.widget/icons/#{icon}.png)")
             element.removeClass('loading')
             setTimeout =>
                 element.removeClass('prepare-loading')
             , 500
-        , 500
+        else
+            element.addClass('prepare-loading')
+            element.addClass('loading')
+            setTimeout =>
+                element.css('-webkit-mask-image', "url(forecast.widget/icons/#{icon}.png)")
+                element.removeClass('loading')
+                setTimeout =>
+                    element.removeClass('prepare-loading')
+                , 500
+            , 500
 
 bearing: (bearing) ->
     direction_index = Math.round(bearing / 45)
