@@ -26,6 +26,8 @@
         "Stripe": true,
         "TweenLite": false,
         "window": false,
-        "XMLHttpRequest": false
+        "XMLHttpRequest": false,
+        "$": false,
+        "geolocation": false
     }
 }
