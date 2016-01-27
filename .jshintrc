@@ -1,0 +1,31 @@
+{
+    "curly": true,
+    "latedef": true,
+    "loopfunc": true,
+    "node": true,
+    "quotmark": true,
+    "trailing": true,
+    "undef": true,
+    "unused": true,
+
+    "globals": {
+        "ActiveXObject": false,
+        "alert": false,
+        "angular": false,
+        "async": true,
+        "Audio": false,
+        "DATE": false,
+        "describe": false,
+        "document": false,
+        "FileReader": false,
+        "it": false,
+        "localStorage": false,
+        "navigator": false,
+        "ngApp": true,
+        "Power4": false,
+        "Stripe": true,
+        "TweenLite": false,
+        "window": false,
+        "XMLHttpRequest": false
+    }
+}

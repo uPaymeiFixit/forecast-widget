@@ -17,7 +17,7 @@ style: """
 
     @font-face
         font-family Weather
-        src url(pretty-weather.widget/icons.svg) format('svg')
+        src: url(pretty-weather.widget/icons.svg) format('svg')
 
     @font-face
         font-family: Roboto
@@ -191,6 +191,8 @@ style: """
 command: ""
 
 render: (o) -> """
+<link href="forecast.widget/style/dist/main.css" rel="stylesheet">
+
 <div class="fe_forecast loading" style="display:flex; flex-direction:row;">
 
     <div class="fe_currently" id="current-weather" style="display:flex; flex-direction:column;">
@@ -387,18 +389,6 @@ changeIcon: (element, icon) ->
 bearing: (bearing) ->
     direction_index = Math.round(bearing / 45)
     return ["N", "NE", "E", "SE", "S", "SW", "W", "NW", "N"][direction_index]
-
-    # data  = JSON.parse(output)
-    # today = data.daily?.data[0]
-    #
-    # return unless today?
-    # date  = @getDate today.time
-    #
-    # $(domEl).find('.temp').prop 'textContent', Math.round(today.temperatureMax)+'°'
-    # $(domEl).find('.summary').text today.summary
-    # $(domEl).find('.icon')[0]?.textContent = @getIcon(today)
-    # $(domEl).find('.date').prop('textContent',@dayMapping[date.getDay()])
-
 
 dayMapping:
   0: 'Sun'

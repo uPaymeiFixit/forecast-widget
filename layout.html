@@ -1,18 +1,24 @@
-<div style="display:flex; flex-direction:row;">
-    <div id="current-weather" style="display:flex; flex-direction:column;">
+<link href="forecast.widget/style/dist/main.css" rel="stylesheet">
+
+<div class="fe-forecast loading" style="display:flex; flex-direction:row;">
+
+    <div class="fe-currently" id="current-weather" style="display:flex; flex-direction:column;">
+        <!-- Top of Current Weather -->
         <div style="display:flex; flex-direction:row;">
-            <div id="icon" class="weather-icon"></div>
+            <div id="fe-current-icon" class="weather-icon big"></div>
             <div style="display:flex; flex-direction:column;">
-                <div id="temp"></div>
-                <div id="temp-direction"></div>
+                <div class="fe-temp"></div>
+                <div class="fe-temp-direction" id="temp-direction"></div>
             </div>
         </div>
-        <div style="display:flex; flex-direction:column;">
-            <div id="description"></div>
-            <div id="wind"></div>
+        <!-- Bottom of Current Weather -->
+        <div class="fe-more-info" style="display:flex; flex-direction:column;">
+            <div class="fe-summary"></div>
+            <div class="fe-wind"></div>
         </div>
     </div>
-    <div style="display:flex; flex-direction:row;">
+
+    <div class="days" style="display:flex; flex-direction:row;">
         <div id="day0" style="display:flex; flex-direction:column;">
             <div class="day-text"></div>
             <div class="weather-icon"></div>

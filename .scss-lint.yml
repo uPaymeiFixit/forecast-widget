@@ -1,0 +1,23 @@
+linters:
+    ZeroUnit:
+        enabled: false
+    Indentation:
+        width: 4
+    LeadingZero:
+        enabled: false
+    NestingDepth:
+        enabled: false
+    VendorPrefix:
+        enabled: false
+    IdSelector:
+        enabled: false
+    PropertySortOrder:
+        enabled: true
+        order: ["position", "top", "left", "right", "bottom", "width", "min-width", "max-width", "height", "min-height", "max-height", "margin", "margin-top", "margin-left", "margin-right", "margin-bottom", "transform", "padding", "padding-top", "padding-left", "padding-right", "padding-bottom", "z-index", "display", "opacity", "visibility", "overflow", "overflow-x", "overflow-y", "float", "clear", "table-layout", "border-collapse", "empty-cells", "box-sizing", "border", "border-width", "border-style", "border-color", "border-radius", "border-top", "border-top-width", "border-top-style", "border-top-color", "border-right", "border-right-width", "border-right-style", "border-right-color", "border-bottom", "border-bottom-width", "border-bottom-style", "border-bottom-color", "border-left", "border-left-width", "border-left-style", "border-left-color", "border-top-left-radius", "border-top-right-radius", "border-bottom-right-radius", "border-bottom-left-radius", "white-space", "content", "color", "background", "background-image", "background-repeat", "background-attachment", "background-position", "background-size", "background-color", "font", "font-family", "font-weight", "font-style", "font-variant", "font-size", "letter-spacing", "line-height", "list-style", "list-style-type", "list-style-position", "list-style-image", "outline", "outline-width", "outline-style", "outline-color", "text-align", "text-decoration", "text-indent", "text-transform", "text-shadow", "animation", "transition", "box-shadow"]
+        ignore_unspecified: true
+    Shorthand:
+        enabled: false
+    SelectorDepth:
+        enabled: false
+    SingleLinePerSelector:
+        enabled: false
