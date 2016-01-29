@@ -17,7 +17,7 @@ style: """
 
     @font-face
         font-family Weather
-        src: url(pretty-weather.widget/icons.svg) format('svg')
+        src: url(forecast.widget/icons.svg) format('svg')
 
     @font-face
         font-family: Roboto

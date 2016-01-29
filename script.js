@@ -1,26 +1,43 @@
 module.exports = {
-    command: 'echo "test"',
+    command: '',
+
+    apiKey: 'f24accee826e147ee895c96f69db3ab2', // put your forcast.io api key inside the quotes here
+
+    refreshFrequency: false,
+
+    refreshFrequencyWithBlackjackAndHookers: 120000,
+    lat: 33.8706763, // other options are auto
+    lon: -117.865775, // other options are auto
+    units: 'us', // us, si, ca, uk, auto
 
     afterRender: function () {
+        $('#forecast-widget-index-js').css('top', '550px');
+        $('#forecast-widget-index-js').css('left', '10px');
+        $('#forecast-widget-index-js').css('width', '500px');
+        $('#forecast-widget-index-js').css('color', 'white');
+        $('#forecast-widget-index-js').css('font-family', 'Roboto');
+        $('#forecast-widget-index-js').css('text-align', 'center');
+
+        var uber = this;
 
         var ready = function () {
-            this.run(this.command, function () {});
-            this.refresh();
+            uber.run(uber.command, function () {});
+            uber.refresh();
             setInterval(function () {
-                this.run(this.command, function () {});
-                this.refresh();
-            }, this.refreshFrequencyWithBlackjackAndHookers);
+                uber.run(uber.command, function () {});
+                uber.refresh();
+            }, uber.refreshFrequencyWithBlackjackAndHookers);
         };
 
-        if (this.lat == 'auto' && this.lon == 'auto') {
+        if (uber.lat == 'auto' && uber.lon == 'auto') {
             geolocation.getCurrentPosition(function (e) {
-                this.lat = e.position.coords.latitude;
-                this.lon = e.position.coords.longitude;
-                this.command = this.makeCommand(this.apiKey, this.lat + ',' + this.lon, this.units);
+                uber.lat = e.position.coords.latitude;
+                uber.lon = e.position.coords.longitude;
+                uber.command = uber.makeCommand(uber.apiKey, uber.lat + ',' + uber.lon, uber.units);
                 ready();
             });
         } else {
-            this.command = this.makeCommand(this.apiKey, this.lat + ',' + this.lon, this.units);
+            uber.command = uber.makeCommand(uber.apiKey, uber.lat + ',' + uber.lon, uber.units);
             ready();
         }
     },
@@ -67,9 +84,9 @@ module.exports = {
             var wind_speed = Math.round(output.currently.windSpeed);
             var wind_speed_units = this.unit_labels[this.units || 'us'].speed;
             var wind_bearing = this.bearing(output.currently.windBearing);
-            $('.fe_wind').text('Wind: ' + wind_speed + ' ' + wind_speed_units + ' (' + wind_bearing + ')');
+            $('.fe-wind').text('Wind: ' + wind_speed + ' ' + wind_speed_units + ' (' + wind_bearing + ')');
 
-            this.changeIcon($('#fe_current_icon'), output.currently.icon);
+            this.changeIcon($('#fe-current-icon'), output.currently.icon);
 
             var tempMin = 1000;
             var tempMax = -1000;
@@ -104,7 +121,7 @@ module.exports = {
                 // $("#day#{day}").find('.bar').text("#{day_high_rel} #{day_low_rel}")
             }
 
-            $('.fe_forecast').removeClass('loading');
+            $('.fe-forecast').removeClass('loading');
         }
     },
 

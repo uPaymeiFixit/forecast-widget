@@ -1,6 +1,6 @@
 $color: rgb(255, 255, 255);
 
-#forecast-widget-index-coffee {
+#forecast-widget-index-js {
     top: 550px;
     left: 10px;
     width: 500px;
@@ -11,7 +11,7 @@ $color: rgb(255, 255, 255);
 
 @font-face {
     font-family: Weather;
-    src: url('pretty-weather.widget/icons.svg') format('svg');
+    src: url('forecast.widget/icons.svg') format('svg');
 }
 
 @font-face {
@@ -97,7 +97,7 @@ $color: rgb(255, 255, 255);
     height: 25px;
     background-size: cover;
 
-    .big {
+    &.big {
         width: 80px;
         height: 80px;
     }
@@ -111,7 +111,7 @@ $color: rgb(255, 255, 255);
 }
 
 .fe-temp::after {
-    content: '°';
+    content: "°";
 }
 
 .fe-temp-direction {
@@ -132,7 +132,7 @@ $color: rgb(255, 255, 255);
     margin-right: auto;
     background: $color;
     -webkit-mask-position: 0 0;
-    -webkit-mask-image: url('');
+    -webkit-mask-image: url("");
     -webkit-mask-size: 25px 25px;
 }
 
@@ -181,7 +181,7 @@ $color: rgb(255, 255, 255);
 #fe-current-icon {
     background: $color;
     -webkit-mask-position: 0 0;
-    -webkit-mask-image: url('');
+    -webkit-mask-image: url("");
     -webkit-mask-size: 80px 80px;
 }
 

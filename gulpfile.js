@@ -62,6 +62,11 @@ gulp.task('sass', function () {
             }
             console.log(msg);
         }))
+        .pipe(gulp.dest('build/intermediate'));
+});
+
+gulp.task('copy-resources', function () {
+    return gulp.src('resources/**/*')
         .pipe(gulp.dest('build/final'));
 });
 
@@ -69,22 +74,16 @@ gulp.task('compile-index', function () {
     if (!compileIndex) {
         compileIndex = require('./modules/compile-index');
     }
-    return gulp.src(['layout.html', 'script.js'])
+    return gulp.src(['layout.html', 'build/intermediate/style.css', 'script.js'])
         .pipe(compileIndex('index.js'))
         .pipe(gulp.dest('build/final'));
-    // if (!concat) {
-    //     concat = require('gulp-concat');
-    // }
-    // return gulp.src(['layout.html', 'script.js'])
-    //     .pipe(concat('index.js'))
-    //     .pipe(gulp.dest('build/final'));
 });
 
 gulp.task('zip', function () {
     if (!zip) {
         zip = require('gulp-zip');
     }
-    return gulp.src('build/final')
+    return gulp.src('build/final/**/*')
         .pipe(zip('forecast.widget.zip'))
         .pipe(gulp.dest('build'));
 });
@@ -95,5 +94,5 @@ gulp.task('watch', function () {
     gulp.watch('index.html', ['compile-index']);
 });
 
-gulp.task('default', ['watch', 'sass', 'compile-index']);
-gulp.task('build', ['sass', 'compile-index', 'zip']);
+gulp.task('default', ['watch', 'sass', 'copy-resources', 'compile-index']);
+gulp.task('build', ['sass', 'copy-resources', 'compile-index', 'zip']);
