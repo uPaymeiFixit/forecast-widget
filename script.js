@@ -1,4 +1,6 @@
 module.exports = {
+    command: 'echo "test"',
+
     afterRender: function () {
 
         var ready = function () {
