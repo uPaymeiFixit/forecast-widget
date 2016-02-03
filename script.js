@@ -40,6 +40,10 @@ module.exports = {
             uber.command = uber.makeCommand(uber.apiKey, uber.lat + ',' + uber.lon, uber.units);
             ready();
         }
+
+        $('#forecast-widget-index-js').click(function () {
+            uber.run('open http://www.wunderground.com', function () {});
+        });
     },
 
     makeCommand: function (apiKey, location, units) {
