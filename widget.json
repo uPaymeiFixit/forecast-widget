@@ -1,0 +1,6 @@
+{
+  "name": "Forecast",
+  "description": "Uses the Forecast.io API to create a nice looking weather forecast.",
+  "author": "Josh Gibbs @ Louis Orleans",
+  "email": "Josh Gibbs <uPaymeiFixit@gmail.com>, Louis Orleans <Louis@Orleans.io>"
+}
