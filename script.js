@@ -11,12 +11,12 @@ module.exports = {
     units: 'us', // us, si, ca, uk, auto
 
     afterRender: function () {
-        $('#forecast-widget-index-js').css('top', '550px');
-        $('#forecast-widget-index-js').css('left', '10px');
-        $('#forecast-widget-index-js').css('width', '500px');
-        $('#forecast-widget-index-js').css('color', 'white');
-        $('#forecast-widget-index-js').css('font-family', 'Roboto');
-        $('#forecast-widget-index-js').css('text-align', 'center');
+        var widget = $('#forecast-widget-index-js');
+        for (var i in document.styleSheets[1].rules[0].style) {
+            if (typeof document.styleSheets[1].rules[0].style[i] === 'string' && document.styleSheets[1].rules[0].style[i] !== '') {
+                widget.css(i, document.styleSheets[1].rules[0].style[i]);
+            }
+        }
 
         var uber = this;
 
@@ -106,7 +106,7 @@ module.exports = {
 
             for (day in output.daily.data) {
                 if (day === '0') {
-                    $('#day' + day).find('.day-text').text('Today');
+                    $('#day' + day).find('.day-text').text('Tod');
                 } else {
                     $('#day' + day).find('.day-text').text(this.dayMapping[new Date(output.daily.data[day].time * 1000).getDay()]);
                 }

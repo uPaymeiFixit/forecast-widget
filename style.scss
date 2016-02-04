@@ -1,9 +1,9 @@
-$color: rgb(255, 255, 255);
+$color: rgba(255, 255, 255, 1);
 
 #forecast-widget-index-js {
     top: 550px;
     left: 10px;
-    width: 500px;
+    width: 455px;
     color: $color;
     font-family: Roboto;
     text-align: center;
@@ -121,8 +121,12 @@ $color: rgb(255, 255, 255);
     text-align: center;
 }
 
+.days {
+    width: 100%;
+}
+
 .days > div {
-    width: 38px;
+    width: 12.5%;
     -webkit-align-content: center;
     align-content: center;
 }
@@ -137,9 +141,9 @@ $color: rgb(255, 255, 255);
 }
 
 .day-text {
-    font-weight: 500;
+    font-weight: 900;
     font-size: 12px;
-    text-transform: uppercase;
+    // text-transform: uppercase;
 }
 
 .temp-range {
@@ -148,32 +152,36 @@ $color: rgb(255, 255, 255);
     height: 100px;
     margin-top: 15px;
 
-    .bar {
-        position: absolute;
-        // margin-left: auto;
-        // margin-right: auto;
-        left: 9px;
+    .center-bar {
+        margin-left: auto;
+        margin-right: auto;
         width: 20px;
-        border-radius: 20px;
-        background-color: $color;
-        -webkit-transition: top 0.5s, bottom 0.5s;
 
-        &::before {
+        .bar {
             position: absolute;
-            top: -14px;
-            left: 4px;
-            content: attr(data-content-high);
-            font-weight: 300;
-            font-size: 11px;
-        }
+            // left: 9px;
+            width: 20px;
+            border-radius: 20px;
+            background-color: $color;
+            -webkit-transition: top 0.5s, bottom 0.5s;
 
-        &::after {
-            position: absolute;
-            left: 4px;
-            bottom: -15px;
-            content: attr(data-content-low);
-            font-weight: 300;
-            font-size: 11px;
+            &::before {
+                position: absolute;
+                top: -14px;
+                left: 4px;
+                content: attr(data-content-high);
+                font-weight: 300;
+                font-size: 11px;
+            }
+
+            &::after {
+                position: absolute;
+                left: 4px;
+                bottom: -15px;
+                content: attr(data-content-low);
+                font-weight: 300;
+                font-size: 11px;
+            }
         }
     }
 }
@@ -195,8 +203,10 @@ $color: rgb(255, 255, 255);
 }
 
 .fe-currently {
+    width: 260px;
+
     &:first-child {
-        margin-top: auto;
+        margin-top: 5px;
     }
 
     &:last-child {
