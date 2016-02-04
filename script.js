@@ -219,5 +219,5 @@ module.exports = {
         6: 'Sat'
     },
 
-    api_instructions: '<b>Installation Instructions</b><br>Replace "API_KEY" with an API key obtained from https://developer.forecast.io/'
+    api_instructions: '<b>Installation Instructions</b><br>Replace "API_KEY" in index.js with an API key obtained from https://developer.forecast.io/'
 };
