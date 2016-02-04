@@ -1,13 +1,14 @@
 module.exports = {
     command: '',
 
-    apiKey: 'f24accee826e147ee895c96f69db3ab2', // put your forcast.io api key inside the quotes here
+    // To get your own API key, go to https://developer.forecast.io/
+    apiKey: '<FORECAST.IO API KEY>', // put your forcast.io api key inside the quotes here
 
     refreshFrequency: false,
 
     refreshFrequencyWithBlackjackAndHookers: 120000,
-    lat: 33.8706763, // other options are auto
-    lon: -117.865775, // other options are auto
+    lat: '<YOUR LATITUDE>', // other options are auto
+    lon: '<YOUR LONGITUDE>', // other options are auto
     units: 'us', // us, si, ca, uk, auto
 
     afterRender: function () {
@@ -19,6 +20,17 @@ module.exports = {
         }
 
         var uber = this;
+
+        if (uber.apiKey === '<FORECAST.IO API KEY>' || uber.lat === '<YOUR LATITUDE>' || uber.lon === '<YOUR LONGITUDE>') {
+            var error = ((uber.apiKey === '<FORECAST.IO API KEY>') ? 'CHANGE YOUR FORECAST.IO API KEY<br />' : '') +
+                ((uber.lat === '<YOUR LATITUDE>') ? 'EDIT YOUR LATITUDE<br />' : '') +
+                ((uber.lon === '<YOUR LONGITUDE>') ? 'EDIT YOUR LONGITUDE' : '');
+            widget.html(error);
+            widget.css('text-shadow', '1px 1px 15px rgb(0, 0, 0)');
+            widget.css('font-weight', 900);
+            widget.css('font-size', '20px');
+            return;
+        }
 
         var ready = function () {
             uber.run(uber.command, function () {});
