@@ -1,11 +1,17 @@
-$color: rgba(255, 255, 255, 1);
+// ##### ################## BEGIN SETTINGS #########################
+$color: rgba(0, 255, 255, 1); // Widget color and transparancy     #
+$x: 550px; // X Position                                           #
+$y: 10px; // Y Position                                            #
+$width: 455px; // Width                                            #
+$font: Roboto; // Font                                             #
+// ######################## BEGIN SETTINGS #########################
 
 #forecast-widget-index-js {
-    top: 550px;
-    left: 10px;
-    width: 455px;
+    top: $x;
+    left: $y;
+    width: $width;
+    font-family: $font;
     color: $color;
-    font-family: Roboto;
     text-align: center;
 }
 
