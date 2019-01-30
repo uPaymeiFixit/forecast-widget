@@ -19,7 +19,7 @@ module.exports = {
         // A workaround to use scss instead of stylus
         var widget = $('#forecast-widget-index-js');
         for (var i = 0; i < document.styleSheets.length; i++) {
-            if (document.styleSheets[i].ownerNode.nextElementSibling.id === 'forecast-widget-index-js') {
+            if (document.styleSheets[i].ownerNode.nextElementSibling != null && document.styleSheets[i].ownerNode.nextElementSibling.id === 'forecast-widget-index-js') {
                 for (var j in document.styleSheets[i].rules[0].style) {
                     if (typeof document.styleSheets[i].rules[0].style[j] === 'string' && document.styleSheets[i].rules[0].style[j] !== '') {
                         widget.css(j, document.styleSheets[i].rules[0].style[j]);
